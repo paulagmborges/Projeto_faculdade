@@ -75,7 +75,7 @@ Node.js (versão recomendada: LTS)<br>
 
 - Android Studio / Xcode para emulação ou um dispositivo físico <br>
 
-6.Estrutura do Projeto**
+6.Estrutura do Projeto
 
 ```bash
 Projeto_faculdade/
@@ -94,3 +94,6 @@ Projeto_faculdade/
 ├── package.json              # Gerenciador de dependências e scripts do projeto
 ├── README.md                 # Documentação do projeto
 └── .gitignore                # Arquivos ignorados pelo Git
+```
+7.Desenvolvido por:
+Paula Borges
