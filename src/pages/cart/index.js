@@ -4,8 +4,8 @@ import { CartContext } from '../../context/cartContext'
 import CardItem from '../../components/CardItem/index'
 
 export default function Cart(){
-  const { cart, addItemCart, removeItemCart } = useContext(CartContext);
-
+  const { cart, addItemCart, removeItemCart,total } = useContext(CartContext);
+ 
 
 
   return(
@@ -21,6 +21,11 @@ export default function Cart(){
             addAmount={ () => addItemCart(item) }
             removeAmount={ () => removeItemCart(item) }
           />
+        )}
+        ListFooterComponent={() => (
+          <View style={stlyes.totalContainer}>
+            <Text style={stlyes.total}>Total: R$ {total.toFixed(2)}</Text>
+          </View>
         )}
       />
     </View>
