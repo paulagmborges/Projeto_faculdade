@@ -1,4 +1,7 @@
-# **Veterinary Services App**
+# **Veterinary Services App!**
+![Veterinário Animado](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcnM0d216bHZsbTF1ZzZuenF3dms5eHEyOTE2ZHZseW1yYnY3b3hrcyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vUc341wCXiY4U/giphy.gif)
+
+
 
 Este é um aplicativo desenvolvido para listar serviços de veterinária e permitir que os usuários adicionem esses serviços em um carrinho de compras. O aplicativo foi desenvolvido usando React Native, e oferece uma interface simples e intuitiva para o gerenciamento de serviços e carrinho.
 
