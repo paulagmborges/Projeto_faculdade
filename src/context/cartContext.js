@@ -7,8 +7,14 @@ function CartProvider({ children }) {
 
   function addItemCart(newItem) {
     const indexItem = cart.findIndex(item => item.id === newItem.id);
+
     if (indexItem !== -1) {
-      // Lógica para atualizar quantidade se já existir no carrinho
+      
+      const updatedCart = [...cart];  
+      updatedCart[indexItem].amount = updatedCart[indexItem].amount + 1;
+      updatedCart[indexItem].total = updatedCart[indexItem].amount * updatedCart[indexItem].price;
+
+      setCart(updatedCart); 
       return;
     }
 
@@ -17,8 +23,24 @@ function CartProvider({ children }) {
       amount: 1,
       total: newItem.price,
     };
-    setCart(products => [...products, data]);
-    console.log([...cart, data]);
+
+    setCart(products => [...products, data]); 
+  }
+
+  function removeItemCart(product) {
+    const indexItem = cart.findIndex(item => item.id === product.id);
+
+    if (cart[indexItem]?.amount > 1) {
+      const updatedCart = [...cart]; 
+      updatedCart[indexItem].amount = updatedCart[indexItem].amount - 1;
+      updatedCart[indexItem].total = updatedCart[indexItem].total - updatedCart[indexItem].price;
+
+      setCart(updatedCart); 
+      return;
+    }
+
+    const updatedCart = cart.filter(item => item.id !== product.id); 
+    setCart(updatedCart); 
   }
 
   return (
@@ -26,12 +48,13 @@ function CartProvider({ children }) {
       value={{
         cart,
         addItemCart,
+        removeItemCart,
       }}
     >
-      {/* Certifique-se de encapsular children corretamente */}
       {children}
     </CartContext.Provider>
   );
 }
 
 export default CartProvider;
+
