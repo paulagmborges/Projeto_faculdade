@@ -1,34 +1,40 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { View, Text, StyleSheet, SafeAreaView, FlatList, TouchableOpacity} from 'react-native'
 
 import { Feather } from '@expo/vector-icons'
+import Product from '../../components/Product'
+import { useNavigation } from '@react-navigation/native'
+import { CartContext } from '../../context/cartContext'
 
 export default function Home(){
+  const { cart } = useContext(CartContext)
+
+  const navigation = useNavigation();
   const [products, setProducts] = useState([
     {
       id: '1',
-      name: "",
-      price: 19.90
+      name: "Consulta",
+      price: 200
     },
     {
       id: '2',
-      name: "",
-      price: 6.50
+      name: "Anti-rábica",
+      price: 90
     },
     {
       id: '4',
-      name: "",
-      price: 15
+      name: "Vacina multipla",
+      price: 150
     },
     {
       id: '5',
-      name: "",
+      name: "Banho",
       price: 23.90
     },
     {
       id: '6',
-      name: "",
-      price: 6.00
+      name: "Tosa",
+      price: 60.00
     },
   ])
 
@@ -37,14 +43,27 @@ export default function Home(){
       <View style={stlyes.cartContent}>
         <Text style={stlyes.title}>Serviços e produtos</Text>
 
-        <TouchableOpacity style={stlyes.cartButton}>
+        <TouchableOpacity 
+        style={stlyes.cartButton} 
+        onPress={ () => navigation.navigate("Cart")}
+        >
           <View style={stlyes.dot}>
-            <Text style={stlyes.dotText}>5</Text>
+            <Text style={stlyes.dotText}>
+              {cart?.length}
+            </Text>
           </View>
           <Feather name="shopping-cart" size={30} color="#000" />
         </TouchableOpacity>
-
       </View>
+
+      <FlatList
+        style={stlyes.list}
+        data={products}
+        keyExtractor={ (item) => String(item.id) }
+        renderItem={ ({ item }) => <Product data={item} /> }
+      />
+
+
     </SafeAreaView>
   )
 }
